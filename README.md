@@ -2,73 +2,25 @@
 A wallet system built with django and contanerized with docker. 
 This system would only be accessible to authenticated users.
 
-[![Wallet Application](https://github.com/Resa-Obamwonyi/wallet_system/workflows/Wallet%20System/badge.svg)](https://github.com/Resa-Obamwonyi/wallet_system/actions)
-
 ## Technologies
 
 * [Python 3.9](https://python.org) : Base programming language for development
 * [Bash Scripting](https://www.codecademy.com/learn/learn-the-command-line/modules/bash-scripting) : Create convenient script for easy development experience
-* [PostgreSQL](https://www.postgresql.org/) : Application relational databases for development, staging and production environments
+* [SQL](https://www.sql.org/) : relational databases for development, staging and production environments
 * [Django Framework](https://www.djangoproject.com/) : Development framework used for the application
 * [Django Rest Framework](https://www.django-rest-framework.org/) : Provides API development tools for easy API development
 * [Github Actions](https://docs.github.com/en/free-pro-team@latest/actions) : Continuous Integration and Deployment
 * [Docker Engine and Docker Compose](https://www.docker.com/) : Containerization of the application and services orchestration
 
 ## Description
-A wallet system for a product used in multiple countries.
 
-### User types
-#### Noob
-- Can only have a wallet in a single currency selected at signup (main).
-- All wallet funding in a different currency should be converted to the main currency.
-- All wallet withdrawals in a different currency should be converted to the main currency before transactions are approved.
-- All wallet funding has to be approved by an administrator.
-- Cannot change main currency.
+# BACKEND
 
-#### Elite
-- Can have multiple wallets in different currencies with a main currency selected at signup.
-- Funding in a particular currency should update the wallet with that currency or create it.
-- Withdrawals in a currency with funds in the wallet of that currency should reduce the wallet balance for that currency.
-- Withdrawals in a currency without a wallet balance should be converted to the main currency and withdrawn.
-- Cannot change main currency
-
-#### Admin
-- Cannot have a wallet.
-- Cannot withdraw funds from any wallet.
-- Can fund wallets for Noob or Elite users in any currency.
-- Can change the main currency of any user.
-- Approves wallet funding for Noob users.
-- Can promote or demote Noobs or Elite users
-
-
-### How to Use and Test this Application
-- Clone the Repository
-- Run `docker-compose up --build`
-- run migrations `docker-compose exec web python manage.py makemigrations`
-- run `docker-compose exec web python manage.py migrate`
-- run tests `docker-compose exec web python manage.py test`
-
-#### As a User
-- Using the API endpoints Make requests to register a user, add wallet, fund wallet and make withdrawals.
-
-#### As an Admin using the hosted API
-- Hit the login endpoint using the following admin credentials
-
-```
-email= testadmin@walletsystem.com
-password= 01234Admin
-```
-
-- Or hit the register admin endpoint to register an admin.
-- Login with admin email and password
-- Hit the promote user endpoint to promote a Noob to Elite.
-- Hit the demote user endpoint to demote an Elite.
-- Hit the approve transactions endpoint to approve withdrawal transactions for Noob users.
-
-### Link to API Documentation
-https://documenter.getpostman.com/view/11737108/TVzVgvQH
-
-### Link to Heroku
-https://wallets-system.herokuapp.com/api
-
-### Comments
+1. Create a signup API that collects 3 input field (Name, Email, Password), at the signup level   create user wallet.
+2. Allow user to login with that Email and Password
+3. Create API to fetch wallet balance
+4. Create API to fund wallet
+5. Create API to withdraw from the wallet
+6. Create API to purchase an item from the Wallet
+7. Create API to upload a product(it should contains ID,Name, Price)
+8. Create API to list a product that one can purchase using the wallet

@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 from decouple import config
 import dj_database_url
+from django.core.management.utils import get_random_secret_key
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,11 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+# SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = config("SECRET_KEY", default=get_random_secret_key(), cast=str)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', cast=bool)
-
+# DEBUG = config('DEBUG', cast=bool)
+DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 REST_FRAMEWORK = {
@@ -47,6 +50,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'walletsystem.wallet',
     'rest_framework.authtoken',
+    'rest_framework',
+    'rest_framework_swagger',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -87,15 +93,23 @@ if DEBUG is False:
     DATABASES = {'default': dj_database_url.config(conn_max_age=60)}
 else:
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': config('NAME'),
-            'USER': config('USER'),
-            'PASSWORD': config('PASSWORD'),
-            'HOST': config('HOST'),
-            'PORT': config('PORT'),
-        }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
+}
+
+
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.postgresql',
+#             'NAME': config('NAME'),
+#             'USER': config('USER'),
+#             'PASSWORD': config('PASSWORD'),
+#             'HOST': config('HOST'),
+#             'PORT': config('PORT'),
+#         }
+#     }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

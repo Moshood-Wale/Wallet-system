@@ -431,7 +431,7 @@ class WithdrawWallet(APIView):
     def post(self, request):
 
         amount = request.data["amount"]
-        currency = request.data["currency"].upper()
+        currency = request.data["amount_currency"].upper()
         user = request.user
 
         try:

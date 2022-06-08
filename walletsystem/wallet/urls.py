@@ -13,10 +13,10 @@ urlpatterns = [
     path('fund_wallet', FundWallet.as_view(), name='fund_user_wallet'),
     path('transactions', TransactionView.as_view(), name='get_transactions'),
     path('withdraw', WithdrawWallet.as_view(), name='make_withdrawals'),
-    path('register-admin', RegisterAdmin.as_view(), name='register_admin'),
+    # path('register-admin', RegisterAdmin.as_view(), name='register_admin'),
     path('pending', PendingWithdrawal.as_view(), name='pending_withdrawal'),
-    path('approve-withdrawal', ApproveWithdrawal.as_view(), name='approve_withdrawal'),
-    path('promote-user', PromoteUser.as_view(), name='promote_user'),
-    path('demote-user', DemoteUser.as_view(), name='demote_user'),
+    # path('approve-withdrawal', ApproveWithdrawal.as_view(), name='approve_withdrawal'),
+    # path('promote-user', PromoteUser.as_view(), name='promote_user'),
+    # path('demote-user', DemoteUser.as_view(), name='demote_user'),
 ]
 

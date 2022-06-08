@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import AbstractBaseUser
-
+from django.contrib.auth.models import UserManager
 import uuid
 
 
@@ -18,6 +18,7 @@ class User(AbstractBaseUser):
     updated_at = models.DateTimeField(auto_now=True)
 
     USERNAME_FIELD = 'email'
+    objects = UserManager()
 
 
 class Elite(models.Model):
